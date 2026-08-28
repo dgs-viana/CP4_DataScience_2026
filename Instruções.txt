@@ -1,0 +1,25 @@
+INFLATIONSCOPE BRASIL — COMO ABRIR
+
+1) Extraia o ZIP.
+2) Abra o terminal dentro da pasta InflationScope_Streamlit.
+3) Execute:
+
+   pip install -r requirements.txt
+
+4) Depois:
+
+   streamlit run app.py
+
+O app tenta carregar a base/modelo já exportados.
+Se eles não existirem, ele tenta buscar os dados oficiais e treinar
+automaticamente o mesmo modelo do notebook.
+
+OPCIONAL:
+python prepare_assets.py
+
+Isso gera os arquivos da pasta dados/ e modelo/ antes de abrir o app.
+
+Para a apresentação:
+- Visão geral -> dados e gráficos
+- Modelo -> métricas, real x previsto e resíduos
+- Nova previsão -> digitar os 5 indicadores e clicar em Prever IPCA
