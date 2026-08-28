@@ -95,6 +95,15 @@ O projeto possui finalidade acadêmica e demonstra a aplicação de técnicas de
 
 ---
 
+## Alunos
+
+Felipe Viana - RM 565341
+Felipe Bonilha - RM 562356
+Joan Ferreira - RM 562913
+Levi de Jesus - RM 563279
+Luigi Borghi - RM 563096
+
+
 **FIAP – Engenharia de Software**
 **CP4 – Data Science & Statistical Computing**
 **2026**
