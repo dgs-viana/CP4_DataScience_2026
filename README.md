@@ -1,6 +1,17 @@
 # InflationScope Brasil
 
-Projeto desenvolvido para a disciplina de **Data Science & Statistical Computing**, no curso de **Engenharia de Software da FIAP**.
+Projeto desenvolvido para o Checkpoint 4 da disciplina de
+Data Science & Statistical Computing - FIAP.
+
+## Aplicação online
+
+A aplicação desenvolvida em Streamlit pode ser acessada pelo link:
+
+🔗 https://inflationscope-brasil.streamlit.app/
+
+## Repositório
+
+🔗 https://github.com/dgs-viana/CP4_DataScience_2026
 
 ## Objetivo
 
