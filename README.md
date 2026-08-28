@@ -27,7 +27,7 @@ Período principal analisado: **2015 a 2025**.
 InflationScope_Streamlit/
 ├── app.py
 ├── prepare_assets.py
-├── CP4_DataScience_REVISADO.ipynb
+├── CP4_DataScience_.ipynb
 ├── requirements.txt
 ├── README.md
 ├── dados/
