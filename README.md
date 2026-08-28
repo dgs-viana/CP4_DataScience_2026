@@ -1,158 +1,100 @@
 # InflationScope Brasil
 
-Projeto acadêmico de **Data Science & Statistical Computing — FIAP 2026**.
+Projeto desenvolvido para a disciplina de **Data Science & Statistical Computing**, no curso de **Engenharia de Software da FIAP**.
 
-O InflationScope Brasil analisa o comportamento mensal do IPCA entre 2015 e 2025 e investiga sua associação com:
+## Objetivo
 
-- IPCA do mês anterior;
-- inflação mensal dos Estados Unidos;
-- variação mensal do dólar;
-- Selic do mês anterior;
-- variação mensal do IBC-Br.
+O **InflationScope Brasil** tem como objetivo analisar o comportamento do **IPCA entre 2015 e 2025** e investigar sua relação com diferentes indicadores macroeconômicos.
 
-O modelo final é uma **Regressão Linear Múltipla**.
+Foram utilizadas variáveis como:
 
-## Fontes dos dados
+* variação do dólar;
+* taxa Selic;
+* IBC-Br;
+* inflação dos Estados Unidos;
+* IPCA do mês anterior;
+* Selic do mês anterior.
 
-- Banco Central do Brasil (SGS): IPCA, dólar, Selic e IBC-Br  
-  https://api.bcb.gov.br/dados/serie/
-- Bureau of Labor Statistics (BLS): CPI dos Estados Unidos  
-  https://api.bls.gov/publicAPI/v1/timeseries/data/
+Os dados foram obtidos de fontes oficiais, como **IBGE, Banco Central do Brasil e Bureau of Labor Statistics (BLS)**.
 
-Período principal analisado: **2015 a 2025**.
+## Tratamento dos dados
 
-## Estrutura do projeto
+Durante o projeto foram realizadas etapas de:
 
-```text
-InflationScope_Streamlit/
-├── app.py
-├── prepare_assets.py
-├── CP4_DataScience_.ipynb
-├── requirements.txt
-├── README.md
-├── dados/
-│   └── base_tratada.csv        # gerado automaticamente
-└── modelo/
-    ├── modelo_multiplo.pkl     # gerado automaticamente
-    ├── variaveis.pkl           # gerado automaticamente
-    └── metricas.json           # gerado automaticamente
+* coleta de dados por APIs;
+* padronização de datas;
+* tratamento de valores ausentes;
+* cálculo de variações mensais;
+* integração das diferentes bases;
+* criação de variáveis defasadas;
+* análise de correlação e multicolinearidade.
+
+## Modelagem
+
+Foram testados quatro modelos:
+
+* Baseline;
+* Regressão Linear Simples;
+* Regressão Linear Múltipla;
+* Regressão Polinomial.
+
+Os modelos foram avaliados utilizando as métricas **MAE, RMSE e R²**.
+
+### Resultados
+
+| Modelo                    |       MAE |      RMSE |        R² |
+| ------------------------- | --------: | --------: | --------: |
+| Baseline                  |     0.251 |     0.333 |    -0.191 |
+| Regressão Linear Simples  |     0.217 |     0.296 |     0.063 |
+| Regressão Linear Múltipla |     0.219 | **0.289** | **0.106** |
+| Regressão Polinomial      | **0.216** |     0.300 |     0.037 |
+
+A **Regressão Linear Múltipla** apresentou o melhor desempenho geral considerando principalmente RMSE e R².
+
+Os resultados também mostraram que o **IPCA do mês anterior** possui uma relação relevante com o comportamento da inflação atual.
+
+## Aplicação Streamlit
+
+O projeto possui uma aplicação desenvolvida em **Streamlit**, criada para apresentar de forma visual os principais dados, indicadores e resultados dos modelos.
+
+## Tecnologias utilizadas
+
+Python, Pandas, NumPy, Matplotlib, Scikit-learn, Statsmodels, Streamlit e Jupyter Notebook.
+
+## Como executar
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/dgs-viana/CP4_DataScience_2026.git
 ```
 
-## Instalação
+Entre na pasta do projeto:
 
-Abra o terminal na pasta do projeto e execute:
+```bash
+cd CP4_DataScience_2026
+```
+
+Instale as dependências:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Forma mais simples de executar
-
-A aplicação consegue buscar os dados oficiais e treinar o mesmo modelo utilizado no notebook caso os arquivos de `dados/` e `modelo/` ainda não existam.
-
-Execute:
+Execute a aplicação:
 
 ```bash
 streamlit run app.py
 ```
 
-O navegador deverá abrir automaticamente.
+## Conclusão
 
-## Preparar os arquivos antes de abrir o Streamlit
+Os modelos apresentaram desempenho superior ao baseline, porém os valores de R² indicam que a inflação depende de diversos fatores além das variáveis utilizadas.
 
-Se preferir gerar a base e o modelo primeiro:
+O projeto possui finalidade acadêmica e demonstra a aplicação de técnicas de **análise de dados, estatística e Machine Learning** em um problema econômico real.
 
-```bash
-python prepare_assets.py
-```
+---
 
-Depois:
-
-```bash
-streamlit run app.py
-```
-
-## Usando os arquivos exportados pelo notebook
-
-A última célula do notebook `CP4_DataScience_REVISADO.ipynb` exporta:
-
-```text
-dados/base_tratada.csv
-modelo/modelo_multiplo.pkl
-modelo/variaveis.pkl
-modelo/metricas.json
-```
-
-Se esses arquivos estiverem nas respectivas pastas, o Streamlit os carregará diretamente.
-
-## O que a aplicação apresenta
-
-A aplicação contém:
-
-- título, problema e fontes;
-- identificação da variável resposta e dos preditores;
-- amostra da base;
-- estatísticas descritivas;
-- gráficos exploratórios;
-- MAE, RMSE e R²;
-- gráfico de valores reais x previstos;
-- gráfico de resíduos;
-- formulário para informar novas entradas;
-- previsão do IPCA em %;
-- aviso automático de extrapolação.
-
-## Modelo
-
-A separação é cronológica:
-
-- 70% dos meses mais antigos para treino;
-- 30% dos meses mais recentes para teste.
-
-Variáveis do modelo:
-
-```text
-ipca_anterior
-inflacao_eua
-var_dolar
-selic_anterior
-var_ibc_br
-```
-
-O aplicativo utiliza a mesma organização das variáveis utilizada no notebook.
-
-Resultados esperados, aproximadamente:
-
-- MAE: 0,219
-- RMSE: 0,289
-- R²: 0,106
-
-Pequenas diferenças só devem ocorrer caso as fontes oficiais sejam revisadas.
-
-## Limitações
-
-O modelo explica apenas parte das variações mensais do IPCA e não deve ser interpretado como uma previsão econômica definitiva ou como evidência de causalidade.
-
-Outras variáveis, como combustíveis, alimentos, energia, commodities e expectativas de inflação, poderiam melhorar análises futuras.
-
-Entradas fora das faixas históricas são consideradas extrapolação. A aplicação mostra um aviso nesses casos.
-
-## Publicação no Streamlit Community Cloud
-
-1. Coloque esta pasta em um repositório do GitHub.
-2. Acesse o Streamlit Community Cloud.
-3. Crie uma nova aplicação apontando para o repositório.
-4. Informe `app.py` como arquivo principal.
-5. Faça o deploy.
-
-O arquivo `requirements.txt` já contém as dependências necessárias.
-
-## Apresentação rápida
-
-Durante a apresentação:
-
-1. Mostre a aba **Visão geral**.
-2. Explique rapidamente os dados e o gráfico do IPCA.
-3. Vá para **Modelo** e mostre MAE, RMSE, R², real x previsto e resíduos.
-4. Vá para **Nova previsão**.
-5. Digite valores e clique em **Prever IPCA**.
-6. Mostre o alerta de extrapolação alterando um valor para fora da faixa histórica.
+**FIAP – Engenharia de Software**
+**CP4 – Data Science & Statistical Computing**
+**2026**
