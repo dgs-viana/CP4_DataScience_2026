@@ -9,9 +9,9 @@ A aplicação desenvolvida em Streamlit pode ser acessada pelo link:
 
 🔗 https://inflationscope-brasil.streamlit.app/
 
-## Repositório
+## Link notebook (Google Colab)
 
-🔗 https://github.com/dgs-viana/CP4_DataScience_2026
+🔗 https://colab.research.google.com/drive/1vnv0ouAqCRJBdRZxjKV37kmuDpmIhpDA?usp=sharing
 
 ## Objetivo
 
