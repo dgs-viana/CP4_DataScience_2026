@@ -50,7 +50,6 @@ ROTULOS = {
 }
 
 
-
 # Coleta dos dados
 
 
@@ -302,15 +301,42 @@ def formatar_base(df):
 # Interface
 
 
-st.title("📈 InflationScope Brasil")
-st.caption("Análise da inflação brasileira entre 2015 e 2025")
 
-st.write(
+# Carregar CSS
+
+
+def carregar_css(arquivo):
+    with open(arquivo, "r", encoding="utf-8") as f:
+        st.markdown(
+            f"<style>{f.read()}</style>",
+            unsafe_allow_html=True
+        )
+
+carregar_css("style.css")
+
+with st.sidebar:
+    st.markdown("## InflationScope")
+    st.caption("Painel de análise da inflação brasileira")
+    st.markdown("---")
+    st.markdown("**FIAP 2026**")
+    st.caption("Data Science & Statistical Computing")
+    st.markdown("**Período:** 2015 — 2025")
+
+st.markdown(
     """
-    O projeto analisa o comportamento mensal do **IPCA brasileiro** e investiga
-    se indicadores econômicos nacionais e internacionais estão associados às
-    suas variações. O modelo final utilizado é uma **Regressão Linear Múltipla**.
-    """
+    <div class="hero">
+        <div class="hero-kicker">Painel econômico • Brasil</div>
+        <div class="hero-title">Inflação brasileira em perspectiva</div>
+        <div class="hero-text">
+            O InflationScope acompanha o comportamento mensal do IPCA e compara
+            a inflação brasileira com indicadores econômicos nacionais e internacionais.
+        </div>
+        <span class="chip">2015 — 2025</span>
+        <span class="chip">129 meses</span>
+        <span class="chip">Regressão Linear Múltipla</span>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 
 try:
@@ -329,15 +355,37 @@ except Exception as erro:
 
 
 aba_visao, aba_modelo, aba_previsao = st.tabs(
-    ["Visão geral", "Modelo", "Nova previsão"]
+    ["📊 Panorama", "🧠 Modelo", "🎯 Simulador"]
 )
 
 
-# =========================================================
+
 # Aba 1 — Visão geral
-# =========================================================
+
 
 with aba_visao:
+    st.subheader("Panorama do período")
+
+    p1, p2, p3, p4 = st.columns(4)
+    p1.metric("IPCA médio", f"{df['ipca'].mean():.2f}%")
+    p2.metric("Maior IPCA", f"{df['ipca'].max():.2f}%")
+    p3.metric("Menor IPCA", f"{df['ipca'].min():.2f}%")
+    p4.metric("Meses analisados", f"{len(df)}")
+
+    st.markdown(
+        """
+        <div class="section-box">
+            <h4>O que este painel mostra?</h4>
+            <p>
+                Primeiro observamos como a inflação brasileira variou ao longo do tempo.
+                Depois comparamos o IPCA com indicadores econômicos para verificar quais
+                apresentaram maior relação com suas mudanças mensais.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
     st.subheader("Problema e dados")
 
     col_a, col_b = st.columns(2)
@@ -377,8 +425,17 @@ with aba_visao:
     )
 
     st.subheader("Amostra da base")
+    amostra = formatar_base(df.head(10)).rename(columns={
+        "mes": "Data",
+        "ipca": "IPCA (%)",
+        "ipca_anterior": "IPCA anterior (%)",
+        "inflacao_eua": "Inflação EUA (%)",
+        "var_dolar": "Variação dólar (%)",
+        "selic_anterior": "Selic anterior (%)",
+        "var_ibc_br": "Variação IBC-Br (%)",
+    })
     st.dataframe(
-        formatar_base(df.head(10)),
+        amostra.round(3),
         use_container_width=True,
         hide_index=True,
     )
@@ -439,6 +496,7 @@ with aba_visao:
             "Existe tendência positiva entre o IPCA anterior e o atual, "
             "embora haja dispersão entre os pontos."
         )
+
 
 
 # Aba 2 — Modelo
@@ -534,7 +592,7 @@ with aba_modelo:
 
 
 with aba_previsao:
-    st.subheader("Faça uma nova previsão")
+    st.subheader("Simulador de IPCA")
 
     st.write(
         """
@@ -601,9 +659,15 @@ with aba_previsao:
 
         previsao = float(modelo.predict(entrada)[0])
 
-        st.metric(
-            "IPCA mensal estimado",
-            f"{previsao:.3f}%",
+        st.markdown(
+            f"""
+            <div style="background:linear-gradient(120deg,#FFFFFF,#EEF4F3); border:2px solid #3B7A68; border-radius:18px; padding:1.4rem; text-align:center; margin-top:1rem;">
+                <div style="font-size:.8rem; font-weight:800; color:#567066; text-transform:uppercase; letter-spacing:.08em;">IPCA mensal estimado</div>
+                <div style="font-size:2.7rem; font-weight:900; color:#1E5C4B;">{previsao:.3f}%</div>
+                <div style="font-size:.82rem; color:#698078;">Estimativa gerada pelo modelo final</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
 
         st.caption(

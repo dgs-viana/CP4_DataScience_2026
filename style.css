@@ -1,0 +1,511 @@
+/* =========================================
+   CONFIGURAÇÃO GERAL
+   ========================================= */
+
+.stApp {
+    background-color: #F7F9FC !important;
+}
+
+[data-testid="stMain"] {
+    background-color: #F7F9FC !important;
+    color: #172033 !important;
+}
+
+.block-container {
+    max-width: 1180px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* Textos gerais */
+[data-testid="stMain"] p,
+[data-testid="stMain"] li,
+[data-testid="stMain"] span,
+[data-testid="stMain"] label {
+    color: #263548;
+}
+
+[data-testid="stMain"] h1,
+[data-testid="stMain"] h2,
+[data-testid="stMain"] h3,
+[data-testid="stMain"] h4,
+[data-testid="stMain"] h5 {
+    color: #102A43 !important;
+}
+
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+
+[data-testid="stSidebar"] {
+    background-color: #102A43 !important;
+    border-right: 1px solid #244A67;
+}
+
+/* Título InflationScope */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #FFFFFF !important;
+}
+
+/* Textos normais */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] label {
+    color: #F2F7FB !important;
+}
+
+/* Captions da sidebar */
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"],
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {
+    color: #DCEEFF !important;
+    -webkit-text-fill-color: #DCEEFF !important;
+    opacity: 1 !important;
+}
+
+/* Linhas da sidebar */
+[data-testid="stSidebar"] hr {
+    border-color: #355C78 !important;
+}
+
+/* Rádio/menu da sidebar */
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 0.45rem 0.6rem;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    background-color: #183C5A;
+}
+
+
+/* =========================================
+   HERO / CABEÇALHO
+   ========================================= */
+
+.hero {
+    background: linear-gradient(
+        120deg,
+        #102A43,
+        #1F5F8B
+    );
+
+    border-radius: 22px;
+    padding: 2rem 2.2rem;
+    margin-bottom: 1.5rem;
+
+    box-shadow:
+        0 10px 25px
+        rgba(16, 42, 67, 0.15);
+}
+
+.hero-kicker {
+    color: #66C2FF !important;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.hero-title {
+    color: #FFFFFF !important;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.7rem;
+}
+
+.hero-text {
+    color: #E8F1F7 !important;
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 0.9rem;
+}
+
+/* Chips do cabeçalho */
+.chip {
+    display: inline-block;
+    padding: 0.35rem 0.70rem;
+    margin-right: 0.35rem;
+    margin-top: 0.25rem;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+
+    font-size: 0.80rem;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   ABAS
+   ========================================= */
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: transparent;
+    margin-bottom: 1rem;
+}
+
+.stTabs button[data-baseweb="tab"] {
+    background: #FFFFFF !important;
+    color: #102A43 !important;
+
+    border: 1px solid #D6E0E8 !important;
+    border-radius: 10px !important;
+
+    padding: 0.55rem 1rem !important;
+
+    font-weight: 700 !important;
+}
+
+.stTabs button[data-baseweb="tab"] * {
+    color: #102A43 !important;
+}
+
+.stTabs button[data-baseweb="tab"]:hover {
+    background: #EAF2F8 !important;
+    color: #0B5CAD !important;
+}
+
+.stTabs button[data-baseweb="tab"][aria-selected="true"] {
+    background: #0B5CAD !important;
+    color: #FFFFFF !important;
+    border-color: #0B5CAD !important;
+}
+
+.stTabs button[data-baseweb="tab"][aria-selected="true"] * {
+    color: #FFFFFF !important;
+}
+
+.stTabs [data-baseweb="tab-highlight"] {
+    background-color: transparent !important;
+}
+
+
+/* =========================================
+   SUBTÍTULOS E TÍTULOS
+   ========================================= */
+
+.section-title {
+    color: #0B5CAD !important;
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.section-subtitle {
+    color: #52667A !important;
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+}
+
+
+/* =========================================
+   CARDS KPI
+   ========================================= */
+
+.kpi-card {
+    background: linear-gradient(
+        120deg,
+        #0B5CAD,
+        #084780
+    );
+
+    border: none;
+    border-radius: 16px;
+
+    padding: 1rem 1.1rem;
+
+    min-height: 120px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(11, 92, 173, 0.18);
+}
+
+.kpi-label {
+    color: #DCEEFF !important;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.kpi-value {
+    color: #FFFFFF !important;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.kpi-note {
+    color: #EAF4FF !important;
+    font-size: 0.8rem;
+}
+
+
+/* =========================================
+   METRICS DO STREAMLIT
+   ========================================= */
+
+[data-testid="stMetric"] {
+    background: linear-gradient(
+        120deg,
+        #0B5CAD,
+        #084780
+    );
+
+    border-radius: 16px;
+    padding: 1rem 1.1rem;
+
+    box-shadow:
+        0 6px 18px
+        rgba(11, 92, 173, 0.14);
+}
+
+[data-testid="stMetricLabel"] p,
+[data-testid="stMetricLabel"] div,
+[data-testid="stMetricLabel"] span {
+    color: #DCEEFF !important;
+    -webkit-text-fill-color: #DCEEFF !important;
+}
+
+[data-testid="stMetricValue"],
+[data-testid="stMetricValue"] div {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+
+/* =========================================
+   CARDS DE TEXTO
+   ========================================= */
+
+.info-card,
+.section-box {
+    background-color: #FFFFFF !important;
+
+    border: 1px solid #D9E2EC;
+
+    border-radius: 16px;
+
+    padding: 1.2rem 1.3rem;
+
+    margin-bottom: 1rem;
+
+    box-shadow:
+        0 4px 15px
+        rgba(16, 42, 67, 0.06);
+}
+
+.info-card h4,
+.section-box h4 {
+    color: #0B5CAD !important;
+    font-weight: 800;
+}
+
+.info-card p,
+.info-card li,
+.section-box p,
+.section-box li {
+    color: #31475B !important;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+
+.stButton > button {
+    background-color: #0B5CAD !important;
+    color: #FFFFFF !important;
+
+    border: none !important;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    padding: 0.65rem 1.2rem;
+}
+
+.stButton > button * {
+    color: #FFFFFF !important;
+}
+
+.stButton > button:hover {
+    background-color: #084780 !important;
+}
+
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+[data-testid="stNumberInput"] label,
+[data-testid="stTextInput"] label {
+    color: #102A43 !important;
+    font-weight: 700;
+}
+
+[data-testid="stNumberInput"] input,
+[data-testid="stTextInput"] input {
+    background-color: #FFFFFF !important;
+    color: #172033 !important;
+
+    border: 1px solid #B8C7D5 !important;
+    border-radius: 8px;
+}
+
+[data-testid="stNumberInput"] button {
+    background-color: #EAF2F8 !important;
+    color: #102A43 !important;
+}
+
+[data-testid="stNumberInput"] button svg {
+    fill: #102A43 !important;
+}
+
+
+/* =========================================
+   TABELAS
+   ========================================= */
+
+[data-testid="stDataFrame"] {
+    background-color: #FFFFFF !important;
+
+    border: 1px solid #D9E2EC;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   EXPANDERS
+   ========================================= */
+
+[data-testid="stExpander"] {
+    background-color: #FFFFFF !important;
+
+    border: 1px solid #D9E2EC !important;
+
+    border-radius: 12px;
+}
+
+[data-testid="stExpander"] summary p {
+    color: #102A43 !important;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ALERTAS
+   ========================================= */
+
+[data-testid="stAlert"] {
+    border-radius: 12px;
+}
+
+[data-testid="stAlert"] p {
+    color: #172033 !important;
+}
+
+
+/* =========================================
+   RESULTADO DA PREVISÃO
+   ========================================= */
+
+.prediction-box {
+    background-color: #EAF4FB !important;
+
+    border: 2px solid #0B5CAD;
+
+    border-radius: 18px;
+
+    padding: 1.5rem;
+
+    text-align: center;
+}
+
+.prediction-label {
+    color: #0B5CAD !important;
+
+    font-weight: 800;
+
+    font-size: 0.8rem;
+
+    text-transform: uppercase;
+}
+
+.prediction-value {
+    color: #102A43 !important;
+
+    font-size: 2.7rem;
+
+    font-weight: 900;
+}
+
+.prediction-note {
+    color: #52667A !important;
+
+    font-size: 0.82rem;
+}
+
+
+/* =========================================
+   CAPTIONS
+   ========================================= */
+
+.small-note {
+    color: #52667A !important;
+    font-size: 0.82rem;
+}
+
+[data-testid="stCaptionContainer"] p {
+    color: #52667A !important;
+}
+
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+[data-testid="stMain"] a {
+    color: #0B5CAD !important;
+    font-weight: 700;
+}
+
+[data-testid="stMain"] a:hover {
+    color: #084780 !important;
+}
+
+
+/* =========================================
+   DIVISORES
+   ========================================= */
+
+[data-testid="stMain"] hr {
+    border-color: #D9E2EC !important;
+}
+
+
+/* =========================================
+   RODAPÉ
+   ========================================= */
+
+footer {
+    visibility: hidden;
+}
